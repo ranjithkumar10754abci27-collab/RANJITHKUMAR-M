@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+
+    int frst, scnd;
+    float thrd, frth;
+
+    scanf("%d %d", &frst, &scnd);
+    scanf("%f %f", &thrd, &frth);
+
+    printf("%d %d\n", frst + scnd, frst - scnd);
+    printf("%.1f %.1f\n", thrd + frth, thrd - frth);
+
+    return 0;
+}
