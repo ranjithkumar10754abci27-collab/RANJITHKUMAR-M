@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void reverseAlphabetic(char *str) {
+    int left = 0, right = strlen(str) - 1;
+
+    while (left < right) {
+        if (!isalpha(str[left])) {
+            left++;
+        } else if (!isalpha(str[right])) {
+            right--;
+        } else {
+            char temp = str[left];
+            str[left] = str[right];
+            str[right] = temp;
+            left++;
+            right--;
+        }
+    }
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = 0; // Remove newline character
+    reverseAlphabetic(str);
+    printf("Modified string: %s\n", str);
+    return 0;
+}
