@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+  char str[1000]; fgets(str, sizeof(str), stdin);
+
+char *str2= strtok(str," ");
+
+while(str2!=NULL){
+    printf("%s\n",str2);
+    str2= strtok(NULL," ");
+}
+return 0;
+}
