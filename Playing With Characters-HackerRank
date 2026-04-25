@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+
+    char letter, string[100], sentence[100];
+
+    // Taking a character as input :
+    scanf("%c", &letter);
+
+    // Taking a String as input :
+    scanf("%s", string);
+
+    // This mathod will not work,
+    // Unless I delete [adapt] the \n from
+    // previous input :
+    scanf("\n");
+
+    // Taking a sentence as input :
+    scanf("%[^\n]*%c", sentence);
+
+    // Print the character :
+    printf("%c\n", letter);
+
+    // Print the string :
+    printf("%s\n", string);
+
+    // Print the sentence : 
+    printf("%s\n", sentence);
+
+    return 0;
+}
