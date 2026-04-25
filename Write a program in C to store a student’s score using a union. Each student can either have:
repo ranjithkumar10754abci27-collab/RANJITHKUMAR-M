@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+union Score {
+    int marks;
+    char grade;
+};
+
+int main() {
+    int n, choice;
+    scanf("%d", &n);
+    union Score students[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &choice);
+        if (choice == 1) {
+            scanf("%d", &students[i].marks);
+        } else if (choice == 2) {
+            scanf(" %c", &students[i].grade);
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (choice == 1) {
+            printf("%d\n", students[i].marks);
+        } else if (choice == 2) {
+            printf("%c\n", students[i].grade);
+        }
+    }
+
+    return 0;
+}
