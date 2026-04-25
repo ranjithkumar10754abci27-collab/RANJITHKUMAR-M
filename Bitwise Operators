@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include<stdbool.h>
+
+#define MAX(a,b) (((a)>(b))?(a):(b))
+#define MIN(a,b) (((a)<(b))?(a):(b))
+
+
+void calculate_the_maximum(int n, int k) {
+    int max_AND = 0, max_OR = 0, max_XOR = 0;
+    bool found_AND = 0, found_OR = 0, found_XOR=0;
+    int noneless_k_AND = 0, noneless_k_OR = 0, noneless_k_XOR = 0;
+    int counter=0;
+    
+    for (int a=1; a<n;a++){
+        for (int b=a+1; b<n+1;b++){
+            counter++; 
+            
+            if (!found_AND){
+                int a_b_AND = a & b;
+                
+                if (a_b_AND == k-1) {
+                    a_b_AND = k-1;
+                    found_AND=1;
+                }
+                
+                if (a_b_AND < k){
+                    max_AND = MAX(max_AND, a_b_AND);
+                } else {
+                    noneless_k_AND++;
+                }
+            }
+            
+            if (!found_OR){
+                int a_b_OR = a | b;
+                
+                if (a_b_OR == k-1) {
+                    a_b_OR = k-1;
+                    found_OR=1;
+                }
+                
+                if (a_b_OR < k){
+                    max_OR = MAX(max_OR, a_b_OR);
+                } else {
+                    noneless_k_OR++;
+                }
+            }
+            
+            if (!found_XOR){
+                int a_b_XOR = a ^ b;
+                
+                if (a_b_XOR == k-1) {
+                    a_b_XOR = k-1;
+                    found_XOR=1;
+                }
+                
+                if (a_b_XOR < k){
+                    max_XOR = MAX(max_XOR, a_b_XOR);
+                } else {
+                    noneless_k_XOR++;
+                }      
+            }
+        }
+    }
+
+    printf("%d\n", counter == noneless_k_AND ? 0 : max_AND);
+    printf("%d\n", counter == noneless_k_OR ? 0 : max_OR);   
+    printf("%d\n", counter == noneless_k_XOR ? 0 : max_XOR);   
+
+}
+
+int main() {
+    int n, k;
+  
+    scanf("%d %d", &n, &k);
+    calculate_the_maximum(n, k);
+ 
+    return 0;
+}
